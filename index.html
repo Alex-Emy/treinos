@@ -13,36 +13,38 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
-  --bg:#ffffff;--bg2:#f7f8fa;--bg3:#eef0f4;
-  --txt:#1a1a1a;--txt2:#555;--txt3:#999;
-  --border:#e0e0e0;--border2:#c8c8c8;
-  --blue:#185FA5;--blue-bg:#E6F1FB;--blue-txt:#0C447C;
-  --green:#3B6D11;--green-bg:#EAF3DE;--green-txt:#27500A;
-  --amber:#854F0B;--amber-bg:#FAEEDA;--amber-txt:#633806;
-  --red:#A32D2D;--red-bg:#FCEBEB;--red-txt:#791F1F;
-  --radius:10px;--radius-sm:6px;
+--bg:#ffffff;--bg2:#f7f8fa;--bg3:#eef0f4;
+--txt:#1a1a1a;--txt2:#555;--txt3:#999;
+--border:#e0e0e0;--border2:#c8c8c8;
+--blue:#185FA5;--blue-bg:#E6F1FB;--blue-txt:#0C447C;
+--green:#3B6D11;--green-bg:#EAF3DE;--green-txt:#27500A;
+--amber:#854F0B;--amber-bg:#FAEEDA;--amber-txt:#633806;
+--red:#A32D2D;--red-bg:#FCEBEB;--red-txt:#791F1F;
+--purple:#6B3FA0;--purple-bg:#F0EAF9;--purple-txt:#4A2575;
+--radius:10px;--radius-sm:6px;
 }
 @media(prefers-color-scheme:dark){
-  :root{
-    --bg:#1c1c1e;--bg2:#2c2c2e;--bg3:#3a3a3c;
-    --txt:#f2f2f7;--txt2:#aeaeb2;--txt3:#636366;
-    --border:#3a3a3c;--border2:#48484a;
-    --blue:#4A9EDF;--blue-bg:#0c2d4a;--blue-txt:#85B7EB;
-    --green:#6ab04c;--green-bg:#1a2f10;--green-txt:#97C459;
-    --amber:#d4a017;--amber-bg:#2e1f04;--amber-txt:#EF9F27;
-    --red:#e05555;--red-bg:#2d1010;--red-txt:#F09595;
-  }
+:root{
+--bg:#1c1c1e;--bg2:#2c2c2e;--bg3:#3a3a3c;
+--txt:#f2f2f7;--txt2:#aeaeb2;--txt3:#636366;
+--border:#3a3a3c;--border2:#48484a;
+--blue:#4A9EDF;--blue-bg:#0c2d4a;--blue-txt:#85B7EB;
+--green:#6ab04c;--green-bg:#1a2f10;--green-txt:#97C459;
+--amber:#d4a017;--amber-bg:#2e1f04;--amber-txt:#EF9F27;
+--red:#e05555;--red-bg:#2d1010;--red-txt:#F09595;
+--purple:#A07FD0;--purple-bg:#1e1030;--purple-txt:#C4A3E8;
+}
 }
 html,body{height:100%;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;line-height:1.4;overflow-x:hidden}
 
-/* LOADING SCREEN */
+/* LOADING */
 #loading{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;gap:16px}
 #loading .logo{font-size:48px}
 #loading p{font-size:14px;color:var(--txt2)}
 .spinner{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* LOGIN SCREEN */
+/* LOGIN */
 #login-screen{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100dvh;padding:24px;gap:20px;background:var(--bg)}
 #login-screen h1{font-size:22px;font-weight:700;color:var(--txt)}
 #login-screen p{font-size:13px;color:var(--txt2);text-align:center;max-width:280px}
@@ -69,18 +71,24 @@ html,body{height:100%;background:var(--bg);color:var(--txt);font-family:-apple-s
 .rb-coach{background:var(--blue-bg);color:var(--blue-txt)}
 .rb-athlete{background:var(--green-bg);color:var(--green-txt)}
 .btn-logout{font-size:11px;padding:3px 8px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:transparent;color:var(--txt2);cursor:pointer;font-family:inherit}
+
+/* TAB NAV */
+.tab-nav{display:flex;border-bottom:1px solid var(--border);background:var(--bg);flex-shrink:0}
+.tab-btn{flex:1;padding:9px 6px;font-size:13px;font-weight:500;border:none;border-bottom:2.5px solid transparent;background:transparent;color:var(--txt2);cursor:pointer;font-family:inherit;transition:all .15s}
+.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+
 .nav-row{display:flex;align-items:center;justify-content:space-between;gap:6px}
 .nav-btns{display:flex;gap:4px}
 button{font-family:inherit;cursor:pointer;border:1px solid var(--border2);border-radius:var(--radius-sm);padding:6px 12px;background:var(--bg2);color:var(--txt);font-size:13px;font-weight:500;transition:background .15s,opacity .15s}
 button:active{opacity:.7}
 .btn-blue{background:var(--blue-bg);border-color:var(--blue);color:var(--blue-txt)}
 .btn-red{background:var(--red-bg);border-color:var(--red);color:var(--red-txt)}
+.btn-purple{background:var(--purple-bg);border-color:var(--purple);color:var(--purple-txt)}
 .btn-icon{padding:6px 10px;font-size:15px;line-height:1}
 .sync-dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;margin-left:4px;vertical-align:middle}
 .sync-dot.offline{background:var(--txt3)}
 .sync-dot.syncing{background:var(--amber);animation:pulse .8s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-
 .legend{display:flex;gap:10px;flex-wrap:wrap;padding:6px 14px 8px;border-bottom:1px solid var(--border);flex-shrink:0}
 .leg{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--txt2)}
 .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -110,7 +118,6 @@ button:active{opacity:.7}
 .sum-val{font-weight:600;color:var(--txt)}
 .bar-wrap{height:3px;background:var(--border);border-radius:2px;margin-top:3px;overflow:hidden}
 .bar-fill{height:3px;background:var(--blue);border-radius:2px}
-.coach-only{opacity:.5;pointer-events:none}
 
 /* BOTTOM SHEET */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;display:none;align-items:flex-end;justify-content:center}
@@ -144,6 +151,51 @@ button:active{opacity:.7}
 .pdf-grid input{width:100%;font-family:inherit;font-size:13px;border:1px solid var(--border2);border-radius:var(--radius-sm);padding:7px 8px;color:var(--txt);background:var(--bg)}
 .pdf-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 #pdf-status{font-size:12px;color:var(--txt2)}
+
+/* ── PROVAS & RECORDES ── */
+#pr-view{flex:1;overflow-y:auto;padding:14px;display:none;flex-direction:column;gap:12px}
+.pr-header{display:flex;align-items:center;justify-content:space-between}
+.pr-header h2{font-size:16px;font-weight:700;color:var(--txt)}
+.pr-empty{text-align:center;padding:40px 20px;color:var(--txt3);font-size:14px}
+.pr-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.pr-card-header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;cursor:pointer;gap:8px}
+.pr-card-header:active{background:var(--bg3)}
+.pr-name{font-size:14px;font-weight:600;color:var(--txt)}
+.pr-meta{font-size:11px;color:var(--txt3)}
+.pr-badge{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600;background:var(--purple-bg);color:var(--purple-txt);flex-shrink:0}
+.pr-chevron{color:var(--txt3);font-size:12px;transition:transform .2s;flex-shrink:0}
+.pr-chevron.open{transform:rotate(90deg)}
+.pr-body{border-top:1px solid var(--border);padding:10px 12px;display:none}
+.pr-body.open{display:block}
+.pr-best{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--purple-bg);border-radius:var(--radius-sm);margin-bottom:10px}
+.pr-best-label{font-size:11px;color:var(--purple-txt);font-weight:600}
+.pr-best-val{font-size:20px;font-weight:700;color:var(--purple-txt)}
+.pr-best-date{font-size:11px;color:var(--purple-txt);opacity:.7}
+.pr-records-list{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.pr-rec-row{display:flex;align-items:center;gap:8px;padding:6px 8px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.pr-rec-rank{width:18px;font-size:11px;font-weight:700;color:var(--txt3);text-align:center;flex-shrink:0}
+.pr-rec-rank.gold{color:#C8960C}
+.pr-rec-time{font-size:14px;font-weight:600;color:var(--txt);flex:1}
+.pr-rec-info{font-size:11px;color:var(--txt2);flex:1;text-align:right}
+.pr-rec-del{font-size:11px;padding:2px 6px;border-radius:4px;background:var(--red-bg);border-color:var(--red);color:var(--red-txt);flex-shrink:0}
+.pr-actions{display:flex;gap:8px}
+.pr-actions button{font-size:12px;padding:6px 12px}
+
+/* PR SHEET */
+#pr-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:none;align-items:flex-end;justify-content:center}
+#pr-overlay.open{display:flex}
+#pr-sheet{background:var(--bg);border-radius:16px 16px 0 0;width:100%;max-width:700px;max-height:90dvh;overflow-y:auto;padding:16px 16px calc(16px + env(safe-area-inset-bottom));animation:slideup .25s ease}
+#pr-sheet h3{font-size:16px;font-weight:600;margin-bottom:14px;color:var(--txt)}
+.pr-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pr-form-grid .full{grid-column:1/-1}
+.pr-fld label{font-size:12px;color:var(--txt2);display:block;margin-bottom:4px}
+.pr-fld input,.pr-fld select{width:100%;font-family:inherit;font-size:14px;border:1px solid var(--border2);border-radius:var(--radius-sm);padding:9px 10px;color:var(--txt);background:var(--bg2)}
+.pr-fld input:focus,.pr-fld select:focus{outline:2px solid var(--blue);outline-offset:-1px;border-color:transparent}
+.pr-sheet-footer{display:flex;gap:8px;margin-top:16px}
+.pr-sheet-footer button{flex:1;padding:11px;font-size:14px;font-weight:600;border-radius:var(--radius)}
+
+/* prefill hint */
+.prefill-hint{font-size:11px;color:var(--green-txt);background:var(--green-bg);border-radius:var(--radius-sm);padding:6px 9px;margin-top:6px;display:none}
 </style>
 </head>
 <body>
@@ -189,7 +241,16 @@ button:active{opacity:.7}
         <button class="btn-logout" onclick="logout()">Sair</button>
       </div>
     </div>
-    <div class="nav-row">
+    <!-- TAB NAV -->
+    <div class="tab-nav" id="tab-nav">
+      <button class="tab-btn active" id="tab-cal" onclick="switchTab('cal')">📅 Calendário</button>
+      <button class="tab-btn" id="tab-pr" onclick="switchTab('pr')">🏆 Provas & PRs</button>
+    </div>
+  </div>
+
+  <!-- CAL CONTROLS (only shown on cal tab) -->
+  <div id="cal-controls">
+    <div style="padding:8px 14px 0; display:flex; align-items:center; justify-content:space-between; gap:6px;">
       <div class="nav-btns">
         <button class="btn-icon" id="btn-prev">←</button>
         <button id="btn-today">Hoje</button>
@@ -197,28 +258,27 @@ button:active{opacity:.7}
       </div>
       <button class="btn-red" id="btn-pdf-toggle">PDF</button>
     </div>
-  </div>
-
-  <div class="legend">
-    <div class="leg"><div class="dot d-plan"></div>Prescrito</div>
-    <div class="leg"><div class="dot d-done"></div>Realizado</div>
-    <div class="leg"><div class="dot d-diff"></div>Alterado</div>
-    <span id="athlete-code-label" style="font-size:11px;color:var(--txt3);margin-left:auto"></span>
-  </div>
-
-  <div id="pdf-panel">
-    <h3>Exportar para PDF</h3>
-    <div class="pdf-grid">
-      <div><label>Atleta</label><input type="text" id="pdf-athlete" placeholder="Nome"></div>
-      <div><label>Semanas</label><input type="number" id="pdf-weeks" value="4" min="1" max="12"></div>
+    <div class="legend">
+      <div class="leg"><div class="dot d-plan"></div>Prescrito</div>
+      <div class="leg"><div class="dot d-done"></div>Realizado</div>
+      <div class="leg"><div class="dot d-diff"></div>Alterado</div>
+      <span id="athlete-code-label" style="font-size:11px;color:var(--txt3);margin-left:auto"></span>
     </div>
-    <div class="pdf-row">
-      <button class="btn-red" id="btn-gen-pdf">Gerar e baixar</button>
-      <button id="btn-pdf-cancel">Cancelar</button>
-      <span id="pdf-status"></span>
+    <div id="pdf-panel">
+      <h3>Exportar para PDF</h3>
+      <div class="pdf-grid">
+        <div><label>Atleta</label><input type="text" id="pdf-athlete" placeholder="Nome"></div>
+        <div><label>Semanas</label><input type="number" id="pdf-weeks" value="4" min="1" max="12"></div>
+      </div>
+      <div class="pdf-row">
+        <button class="btn-red" id="btn-gen-pdf">Gerar e baixar</button>
+        <button id="btn-pdf-cancel">Cancelar</button>
+        <span id="pdf-status"></span>
+      </div>
     </div>
   </div>
 
+  <!-- CALENDAR VIEW -->
   <div id="cal-wrap">
     <table class="cal-table">
       <thead><tr>
@@ -231,9 +291,18 @@ button:active{opacity:.7}
       <tbody id="cal-body"></tbody>
     </table>
   </div>
+
+  <!-- PROVAS & PRs VIEW -->
+  <div id="pr-view">
+    <div class="pr-header">
+      <h2>🏆 Provas & Recordes Pessoais</h2>
+      <button class="btn-purple" id="btn-new-race">+ Nova prova</button>
+    </div>
+    <div id="pr-list"></div>
+  </div>
 </div>
 
-<!-- BOTTOM SHEET -->
+<!-- BOTTOM SHEET (treino) -->
 <div class="overlay" id="overlay">
   <div class="sheet">
     <div class="sheet-handle"></div>
@@ -258,7 +327,7 @@ button:active{opacity:.7}
         <label>Treino prescrito pelo treinador</label>
         <textarea id="view-planned" readonly></textarea>
       </div>
-      <div style="margin-top:2px;font-size:11px;color:var(--txt3)" id="fld-no-prescription" style="display:none"></div>
+      <div style="margin-top:2px;font-size:11px;color:var(--txt3)" id="fld-no-prescription"></div>
     </div>
 
     <div id="execution-section">
@@ -270,7 +339,9 @@ button:active{opacity:.7}
           <button class="st-btn st-diff" data-s="diff">Alterado</button>
         </div>
       </div>
+
       <div id="done-sec">
+        <div class="prefill-hint" id="prefill-hint">✅ Preenchido com o treino prescrito — ajuste se necessário</div>
         <div class="fld">
           <label>Tempos realizados</label>
           <textarea id="inp-times" placeholder="Ex: 55:12 total — parciais: 5:32, 5:29, 5:28..."></textarea>
@@ -280,6 +351,7 @@ button:active{opacity:.7}
           <input type="number" id="inp-km-done" placeholder="0" min="0" step="0.1">
         </div>
       </div>
+
       <div id="diff-sec">
         <div class="fld">
           <label>Treino efetivamente realizado</label>
@@ -300,10 +372,64 @@ button:active{opacity:.7}
   </div>
 </div>
 
+<!-- PR SHEET (nova prova / novo recorde) -->
+<div id="pr-overlay">
+  <div id="pr-sheet">
+    <div class="sheet-handle"></div>
+    <h3 id="pr-sheet-title">Nova Prova</h3>
+
+    <!-- mode: new-race -->
+    <div id="pr-mode-race">
+      <div class="pr-form-grid">
+        <div class="pr-fld full">
+          <label>Nome da prova</label>
+          <input type="text" id="pr-inp-name" placeholder="Ex: 5km, Meia Maratona, 10.000m pista">
+        </div>
+        <div class="pr-fld">
+          <label>Distância (km)</label>
+          <input type="number" id="pr-inp-dist" placeholder="5" min="0" step="0.001">
+        </div>
+        <div class="pr-fld">
+          <label>Tipo</label>
+          <select id="pr-inp-type">
+            <option value="rua">🏙️ Rua</option>
+            <option value="pista">🏟️ Pista</option>
+            <option value="cross">🌿 Cross/Campo</option>
+            <option value="trail">⛰️ Trail</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- mode: new-record -->
+    <div id="pr-mode-record" style="display:none">
+      <div class="pr-form-grid">
+        <div class="pr-fld full">
+          <label>Tempo (mm:ss ou hh:mm:ss)</label>
+          <input type="text" id="pr-inp-time" placeholder="Ex: 21:35 ou 1:45:22" autocomplete="off">
+        </div>
+        <div class="pr-fld">
+          <label>Data</label>
+          <input type="date" id="pr-inp-date">
+        </div>
+        <div class="pr-fld">
+          <label>Local / Evento (opcional)</label>
+          <input type="text" id="pr-inp-loc" placeholder="Ex: São Paulo City Marathon">
+        </div>
+      </div>
+    </div>
+
+    <div class="pr-sheet-footer">
+      <button id="pr-btn-cancel" style="background:var(--bg2)">Cancelar</button>
+      <button id="pr-btn-save" class="btn-save">Salvar</button>
+    </div>
+  </div>
+</div>
+
 <!-- Firebase -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, onValue, set, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import { getDatabase, ref, onValue, set, remove, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -322,20 +448,38 @@ const auth = getAuth(fbApp);
 
 // ─── STATE ───────────────────────────────────────────────
 let data = {};
+let races = {}; // { raceId: { name, dist, type, records: { recId: {time, date, loc} } } }
 let offsetWeeks = 0;
 let editKey = null;
 let currentRole = 'coach';
 let athleteCode = '';
 let dbRef = null;
-let unsubscribe = null;
+let racesRef = null;
+let unsubscribeDays = null;
+let unsubscribeRaces = null;
+let currentTab = 'cal';
+
+// PR sheet state
+let prMode = null; // 'new-race' | 'new-record' | 'edit-race'
+let prEditRaceId = null;
 
 const WEEKS = 8;
 const DAYS_PT = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
 const MONTHS_PT = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const TYPE_LABEL = {rua:'🏙️ Rua', pista:'🏟️ Pista', cross:'🌿 Cross', trail:'⛰️ Trail'};
 
 function dateKey(d){ return d.toISOString().slice(0,10) }
 function getMon(d){ const dt=new Date(d); const day=dt.getDay(); dt.setDate(dt.getDate()+(day===0?-6:1-day)); dt.setHours(0,0,0,0); return dt }
 function wkLabel(m){ return`${String(m.getDate()).padStart(2,'0')}/${String(m.getMonth()+1).padStart(2,'0')}` }
+
+// Parse time string to total seconds for comparison
+function parseTime(s){
+  if(!s) return Infinity;
+  const parts = s.trim().split(':').map(Number);
+  if(parts.length === 2) return parts[0]*60 + parts[1];
+  if(parts.length === 3) return parts[0]*3600 + parts[1]*60 + parts[2];
+  return Infinity;
+}
 
 // ─── AUTH ─────────────────────────────────────────────────
 onAuthStateChanged(auth, user => {
@@ -370,9 +514,10 @@ window.enterApp = function(){
 }
 
 window.logout = function(){
-  if(unsubscribe) unsubscribe();
+  if(unsubscribeDays) unsubscribeDays();
+  if(unsubscribeRaces) unsubscribeRaces();
   localStorage.removeItem('treinos_session');
-  data = {}; offsetWeeks = 0;
+  data = {}; races = {}; offsetWeeks = 0;
   document.getElementById('app').style.display = 'none';
   showLogin();
 }
@@ -386,21 +531,28 @@ function startApp(){
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('app').style.display = 'flex';
 
-  // Badge
   const badge = document.getElementById('role-badge');
   badge.textContent = currentRole === 'coach' ? '🎯 Treinador' : '🏃 Atleta';
   badge.className = 'role-badge ' + (currentRole==='coach' ? 'rb-coach' : 'rb-athlete');
   document.getElementById('athlete-code-label').textContent = 'Código: '+athleteCode;
 
-  // Firebase listener
+  // Days listener
   dbRef = ref(db, 'athletes/'+athleteCode+'/days');
   setSyncState('syncing');
-  if(unsubscribe) unsubscribe();
-  unsubscribe = onValue(dbRef, snap => {
+  if(unsubscribeDays) unsubscribeDays();
+  unsubscribeDays = onValue(dbRef, snap => {
     data = snap.val() || {};
     setSyncState('online');
-    render();
+    if(currentTab === 'cal') render();
   }, ()=> setSyncState('offline'));
+
+  // Races listener
+  racesRef = ref(db, 'athletes/'+athleteCode+'/races');
+  if(unsubscribeRaces) unsubscribeRaces();
+  unsubscribeRaces = onValue(racesRef, snap => {
+    races = snap.val() || {};
+    if(currentTab === 'pr') renderPR();
+  });
 }
 
 function setSyncState(s){
@@ -417,7 +569,18 @@ async function saveDay(key, entry){
   }catch(e){ setSyncState('offline'); alert('Erro ao salvar: '+e.message); }
 }
 
-// ─── RENDER ───────────────────────────────────────────────
+// ─── TAB ──────────────────────────────────────────────────
+window.switchTab = function(tab){
+  currentTab = tab;
+  document.getElementById('tab-cal').classList.toggle('active', tab==='cal');
+  document.getElementById('tab-pr').classList.toggle('active', tab==='pr');
+  document.getElementById('cal-controls').style.display = tab==='cal' ? 'block' : 'none';
+  document.getElementById('cal-wrap').style.display = tab==='cal' ? 'block' : 'none';
+  document.getElementById('pr-view').style.display = tab==='pr' ? 'flex' : 'none';
+  if(tab==='pr') renderPR();
+}
+
+// ─── RENDER CALENDAR ──────────────────────────────────────
 function getWeekSummary(mon){
   let kmPlan=0,kmDone=0,total=0,done=0,diff=0;
   for(let d=0;d<7;d++){
@@ -483,46 +646,269 @@ function render(){
   });
 }
 
-// ─── SHEET ────────────────────────────────────────────────
+// ─── RENDER PROVAS & PRs ──────────────────────────────────
+function renderPR(){
+  const list = document.getElementById('pr-list');
+  const raceIds = Object.keys(races);
+  if(raceIds.length === 0){
+    list.innerHTML = '<div class="pr-empty">Nenhuma prova cadastrada ainda.<br>Toque em <strong>+ Nova prova</strong> para começar.</div>';
+    return;
+  }
+  list.innerHTML = '';
+  raceIds.forEach(raceId => {
+    const race = races[raceId];
+    const records = race.records ? Object.entries(race.records) : [];
+    // sort by time asc
+    records.sort((a,b) => parseTime(a[1].time) - parseTime(b[1].time));
+    const best = records[0];
+
+    const card = document.createElement('div');
+    card.className = 'pr-card';
+
+    // header
+    const hdr = document.createElement('div');
+    hdr.className = 'pr-card-header';
+    hdr.innerHTML = `
+      <div style="flex:1;min-width:0">
+        <div class="pr-name">${race.name}</div>
+        <div class="pr-meta">${race.dist ? race.dist+'km · ' : ''}${TYPE_LABEL[race.type]||race.type||''}</div>
+      </div>
+      ${best ? `<div class="pr-badge">PR: ${best[1].time}</div>` : '<div class="pr-badge" style="opacity:.5">Sem PR</div>'}
+      <span class="pr-chevron" id="chev-${raceId}">▶</span>
+    `;
+    card.appendChild(hdr);
+
+    // body
+    const body = document.createElement('div');
+    body.className = 'pr-body';
+    body.id = 'prb-'+raceId;
+
+    if(best){
+      body.innerHTML += `
+        <div class="pr-best">
+          <div>
+            <div class="pr-best-label">🏆 Recorde Pessoal</div>
+            <div class="pr-best-val">${best[1].time}</div>
+            <div class="pr-best-date">${best[1].date ? formatDate(best[1].date) : ''}${best[1].loc ? ' · '+best[1].loc : ''}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    if(records.length > 0){
+      const recList = document.createElement('div');
+      recList.className = 'pr-records-list';
+      records.forEach(([recId, rec], idx) => {
+        const row = document.createElement('div');
+        row.className = 'pr-rec-row';
+        row.innerHTML = `
+          <span class="pr-rec-rank ${idx===0?'gold':''}">${idx===0?'🥇':idx+1+'º'}</span>
+          <span class="pr-rec-time">${rec.time}</span>
+          <span class="pr-rec-info">${rec.date ? formatDate(rec.date) : '—'}${rec.loc ? '<br>'+rec.loc : ''}</span>
+          <button class="pr-rec-del" data-race="${raceId}" data-rec="${recId}">✕</button>
+        `;
+        recList.appendChild(row);
+      });
+      body.appendChild(recList);
+    }
+
+    const actions = document.createElement('div');
+    actions.className = 'pr-actions';
+    actions.innerHTML = `
+      <button class="btn-blue" data-addrecord="${raceId}">+ Registrar tempo</button>
+      <button data-editrace="${raceId}">✏️ Editar prova</button>
+      <button class="btn-del" data-delrace="${raceId}">🗑️</button>
+    `;
+    body.appendChild(actions);
+    card.appendChild(body);
+
+    // toggle
+    hdr.addEventListener('click', () => {
+      const isOpen = body.classList.toggle('open');
+      document.getElementById('chev-'+raceId).classList.toggle('open', isOpen);
+    });
+
+    // delegate events on buttons
+    body.addEventListener('click', e => {
+      const delRec = e.target.dataset.rec;
+      const delRace = e.target.dataset.delrace;
+      const addRec = e.target.dataset.addrecord;
+      const editRace = e.target.dataset.editrace;
+      if(delRec && e.target.dataset.race){
+        if(confirm('Remover este tempo?')){
+          remove(ref(db,'athletes/'+athleteCode+'/races/'+e.target.dataset.race+'/records/'+delRec));
+        }
+      } else if(delRace){
+        if(confirm('Remover esta prova e todos os recordes?')){
+          remove(ref(db,'athletes/'+athleteCode+'/races/'+delRace));
+        }
+      } else if(addRec){
+        openPRSheet('new-record', addRec);
+      } else if(editRace){
+        openPRSheet('edit-race', editRace);
+      }
+    });
+
+    list.appendChild(card);
+  });
+}
+
+function formatDate(iso){
+  if(!iso) return '';
+  const [y,m,d] = iso.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+// ─── PR SHEET ─────────────────────────────────────────────
+function openPRSheet(mode, raceId){
+  prMode = mode;
+  prEditRaceId = raceId || null;
+  const overlay = document.getElementById('pr-overlay');
+  const title = document.getElementById('pr-sheet-title');
+  const modeRace = document.getElementById('pr-mode-race');
+  const modeRec = document.getElementById('pr-mode-record');
+
+  if(mode === 'new-race'){
+    title.textContent = 'Nova Prova';
+    modeRace.style.display = 'block';
+    modeRec.style.display = 'none';
+    document.getElementById('pr-inp-name').value = '';
+    document.getElementById('pr-inp-dist').value = '';
+    document.getElementById('pr-inp-type').value = 'rua';
+  } else if(mode === 'edit-race'){
+    title.textContent = 'Editar Prova';
+    modeRace.style.display = 'block';
+    modeRec.style.display = 'none';
+    const race = races[raceId];
+    document.getElementById('pr-inp-name').value = race.name || '';
+    document.getElementById('pr-inp-dist').value = race.dist || '';
+    document.getElementById('pr-inp-type').value = race.type || 'rua';
+  } else if(mode === 'new-record'){
+    const raceName = races[raceId]?.name || '';
+    title.textContent = 'Novo tempo — '+raceName;
+    modeRace.style.display = 'none';
+    modeRec.style.display = 'block';
+    document.getElementById('pr-inp-time').value = '';
+    document.getElementById('pr-inp-date').value = new Date().toISOString().slice(0,10);
+    document.getElementById('pr-inp-loc').value = '';
+  }
+
+  overlay.classList.add('open');
+}
+
+function closePRSheet(){
+  document.getElementById('pr-overlay').classList.remove('open');
+}
+
+document.getElementById('pr-btn-cancel').addEventListener('click', closePRSheet);
+document.getElementById('pr-overlay').addEventListener('click', e => {
+  if(e.target === document.getElementById('pr-overlay')) closePRSheet();
+});
+
+document.getElementById('pr-btn-save').addEventListener('click', async () => {
+  if(prMode === 'new-race'){
+    const name = document.getElementById('pr-inp-name').value.trim();
+    if(!name){ alert('Digite o nome da prova.'); return; }
+    const entry = {
+      name,
+      dist: document.getElementById('pr-inp-dist').value || '',
+      type: document.getElementById('pr-inp-type').value,
+    };
+    await push(ref(db,'athletes/'+athleteCode+'/races'), entry);
+    closePRSheet();
+  } else if(prMode === 'edit-race'){
+    const name = document.getElementById('pr-inp-name').value.trim();
+    if(!name){ alert('Digite o nome da prova.'); return; }
+    const existing = races[prEditRaceId] || {};
+    await set(ref(db,'athletes/'+athleteCode+'/races/'+prEditRaceId), {
+      ...existing,
+      name,
+      dist: document.getElementById('pr-inp-dist').value || '',
+      type: document.getElementById('pr-inp-type').value,
+    });
+    closePRSheet();
+  } else if(prMode === 'new-record'){
+    const time = document.getElementById('pr-inp-time').value.trim();
+    if(!time){ alert('Digite o tempo realizado.'); return; }
+    const entry = {
+      time,
+      date: document.getElementById('pr-inp-date').value,
+      loc: document.getElementById('pr-inp-loc').value.trim(),
+    };
+    await push(ref(db,'athletes/'+athleteCode+'/races/'+prEditRaceId+'/records'), entry);
+    closePRSheet();
+  }
+});
+
+document.getElementById('btn-new-race').addEventListener('click', () => openPRSheet('new-race'));
+
+// ─── TREINO SHEET ─────────────────────────────────────────
 function setStatus(s){
   document.querySelectorAll('.st-btn').forEach(b=>b.classList.toggle('active',b.dataset.s===s));
-  document.getElementById('done-sec').style.display=s==='done'?'block':'none';
-  document.getElementById('diff-sec').style.display=s==='diff'?'block':'none';
+  document.getElementById('done-sec').style.display = s==='done' ? 'block' : 'none';
+  document.getElementById('diff-sec').style.display = s==='diff' ? 'block' : 'none';
+
+  // If athlete selects "Realizado conforme", pre-fill with prescribed data
+  if(s === 'done'){
+    const e = data[editKey] || {};
+    const hint = document.getElementById('prefill-hint');
+    // Only prefill if fields are empty (don't overwrite existing data)
+    if(e.planned && !document.getElementById('inp-km-done').value && !document.getElementById('inp-times').value){
+      if(e.kmPlan){
+        document.getElementById('inp-km-done').value = e.kmPlan;
+      }
+      hint.style.display = 'block';
+    } else if(e.planned && document.getElementById('inp-km-done').value){
+      hint.style.display = 'none';
+    } else {
+      hint.style.display = 'none';
+    }
+  } else {
+    document.getElementById('prefill-hint').style.display = 'none';
+  }
 }
+
 function getStatus(){ const a=document.querySelector('.st-btn.active'); return a?a.dataset.s:'planned' }
 
 function openSheet(key, dt){
-  editKey=key;
-  const e=data[key]||{};
-  document.getElementById('sheet-title').textContent=
+  editKey = key;
+  const e = data[key] || {};
+  document.getElementById('sheet-title').textContent =
     `${DAYS_PT[dt.getDay()]}, ${dt.getDate()} de ${MONTHS_PT[dt.getMonth()]}`;
 
   const isCoach = currentRole==='coach';
-  document.getElementById('coach-fields').style.display = isCoach?'block':'none';
-  document.getElementById('athlete-fields').style.display = isCoach?'none':'block';
+  document.getElementById('coach-fields').style.display = isCoach ? 'block' : 'none';
+  document.getElementById('athlete-fields').style.display = isCoach ? 'none' : 'block';
   document.getElementById('sheet-role-note').textContent =
     isCoach ? '✏️ Você é o treinador — edite a prescrição' : '🏃 Registre a execução do treino';
 
   if(isCoach){
-    document.getElementById('inp-planned').value = e.planned||'';
-    document.getElementById('inp-km-plan').value = e.kmPlan||'';
-    // coach can also see/edit execution
+    document.getElementById('inp-planned').value = e.planned || '';
+    document.getElementById('inp-km-plan').value = e.kmPlan || '';
     document.getElementById('execution-section').style.display = 'block';
     document.querySelectorAll('.st-btn').forEach(b=>b.removeAttribute('disabled'));
   } else {
-    // athlete sees prescription (read-only) and edits execution
     const vp = document.getElementById('view-planned');
     const noP = document.getElementById('fld-no-prescription');
-    if(e.planned){ vp.value=e.planned; document.getElementById('fld-prescribed').style.display='block'; noP.style.display='none'; }
-    else { document.getElementById('fld-prescribed').style.display='none'; noP.style.display='block'; noP.textContent='Nenhum treino prescrito para este dia.'; }
+    if(e.planned){
+      vp.value = e.planned;
+      document.getElementById('fld-prescribed').style.display = 'block';
+      noP.style.display = 'none';
+    } else {
+      document.getElementById('fld-prescribed').style.display = 'none';
+      noP.style.display = 'block';
+      noP.textContent = 'Nenhum treino prescrito para este dia.';
+    }
     document.getElementById('execution-section').style.display = 'block';
   }
 
-  document.getElementById('inp-times').value = e.times||'';
-  document.getElementById('inp-km-done').value = e.kmDone||'';
-  document.getElementById('inp-actual').value = e.actual||'';
-  document.getElementById('inp-km-actual').value = e.kmActual||'';
-  setStatus(e.status||'planned');
+  document.getElementById('inp-times').value = e.times || '';
+  document.getElementById('inp-km-done').value = e.kmDone || '';
+  document.getElementById('inp-actual').value = e.actual || '';
+  document.getElementById('inp-km-actual').value = e.kmActual || '';
+  document.getElementById('prefill-hint').style.display = 'none';
+  setStatus(e.status || 'planned');
+
   document.getElementById('overlay').classList.add('open');
 }
 
@@ -534,22 +920,18 @@ document.getElementById('btn-save').addEventListener('click',()=>{
   const e = data[editKey] || {};
   const s = getStatus();
   let entry = {...e};
-
   if(currentRole==='coach'){
     const planned = document.getElementById('inp-planned').value.trim();
     if(!planned){ saveDay(editKey, null); closeSheet(); return; }
     entry.planned = planned;
     entry.kmPlan = document.getElementById('inp-km-plan').value;
   }
-
   entry.status = s;
   entry.times = document.getElementById('inp-times').value.trim();
   entry.kmDone = document.getElementById('inp-km-done').value;
   entry.actual = document.getElementById('inp-actual').value.trim();
   entry.kmActual = document.getElementById('inp-km-actual').value;
-
   if(!entry.planned && currentRole==='athlete'){ closeSheet(); return; }
-
   data[editKey] = entry;
   saveDay(editKey, entry);
   closeSheet(); render();
@@ -558,7 +940,6 @@ document.getElementById('btn-save').addEventListener('click',()=>{
 document.getElementById('btn-clear').addEventListener('click',()=>{
   if(currentRole==='coach'){ saveDay(editKey, null); }
   else {
-    // athlete clears only execution, keeps prescription
     const e = data[editKey]||{};
     const entry = {planned: e.planned||'', kmPlan: e.kmPlan||'', status:'planned', times:'', kmDone:'', actual:'', kmActual:''};
     data[editKey] = entry;
